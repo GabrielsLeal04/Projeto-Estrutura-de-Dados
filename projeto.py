@@ -75,7 +75,7 @@ class Grafo:
       centralidade = nx.degree_centrality(G)
       tamanhos = [1000 + 4000 * centralidade[no] for no in G.nodes()]  # escala ajustável
 
-      # 2. Cores manuais por grupo (exemplo)
+      # 2. Cores manuais por grupo
       grupo_cores = {
           "Miguel": "skyblue",
           "Johnny": "skyblue",
@@ -211,9 +211,9 @@ class Grafo:
 nomes = [
     # Protagonistas e Alunos Principais
     "Miguel", "Robby", "Samantha", "Hawk", "Tory", "Demetri", "Kenny",
-    # Senseis e Mentores
+    # Senseis
     "Johnny", "Daniel", "Kreese", "Chozen", "Terry Silver",
-    # Família e Suporte
+    # Família
     "Amanda", "Carmen", "Anthony",
     # Personagens Secundários
     "Kyler", "Moon", "Yasmine", "Stingray", "Shawn"
@@ -222,12 +222,12 @@ nomes = [
 vertices = [Vertice(nome) for nome in nomes]
 matriz = [[0]*len(vertices) for _ in range(len(vertices))]
 
-# 2. Criar o grafo
+# Criar o grafo
 g = Grafo(vertices, matriz)
 
-# 3. Adicionar arestas com pesos (quanto menor o peso, mais forte a relação)
+# Adicionar arestas com pesos (quanto menor o peso, mais forte a relação)
 
-# Relações de Aliança/Mentoria Fortes (Peso 1)
+# Relações (Peso 1)
 g.adicionar_aresta("Miguel", "Johnny", 1)
 g.adicionar_aresta("Robby", "Daniel", 1)
 g.adicionar_aresta("Samantha", "Daniel", 1)
@@ -238,29 +238,29 @@ g.adicionar_aresta("Amanda", "Daniel", 1)
 g.adicionar_aresta("Carmen", "Johnny", 1)
 g.adicionar_aresta("Carmen", "Miguel", 1)
 
-# Relações de Amizade/Aliança (Peso 2)
+# Relações de Amizade(Peso 2)
 g.adicionar_aresta("Miguel", "Hawk", 2)
-g.adicionar_aresta("Samantha", "Miguel", 2) # Relação complexa
-g.adicionar_aresta("Hawk", "Demetri", 2)   # Tornaram-se amigos
-g.adicionar_aresta("Johnny", "Daniel", 2)   # Aliança instável
-g.adicionar_aresta("Kreese", "Terry Silver", 2) # Aliança de vilões
+g.adicionar_aresta("Samantha", "Miguel", 2) 
+g.adicionar_aresta("Hawk", "Demetri", 2)   
+g.adicionar_aresta("Johnny", "Daniel", 2)   
+g.adicionar_aresta("Kreese", "Terry Silver", 2) 
 g.adicionar_aresta("Moon", "Samantha", 2)
 g.adicionar_aresta("Moon", "Yasmine", 2)
 
 # Relações de Rivalidade ou Conexões Fracas (Peso 3 a 5)
-g.adicionar_aresta("Miguel", "Robby", 4)      # Grande rivalidade
-g.adicionar_aresta("Samantha", "Tory", 5)    # Grande rivalidade
-g.adicionar_aresta("Johnny", "Kreese", 4)     # Rivalidade mestre-aluno
-g.adicionar_aresta("Daniel", "Kreese", 5)     # Ódio puro
-g.adicionar_aresta("Daniel", "Terry Silver", 5) # Ódio puro
-g.adicionar_aresta("Kenny", "Anthony", 4)    # Bullying e rivalidade
+g.adicionar_aresta("Miguel", "Robby", 4)      
+g.adicionar_aresta("Samantha", "Tory", 5)    
+g.adicionar_aresta("Johnny", "Kreese", 4)     
+g.adicionar_aresta("Daniel", "Kreese", 5)     
+g.adicionar_aresta("Daniel", "Terry Silver", 5) 
+g.adicionar_aresta("Kenny", "Anthony", 4)    
 g.adicionar_aresta("Kyler", "Hawk", 3)
 g.adicionar_aresta("Stingray", "Kreese", 3)
-g.adicionar_aresta("Robby", "Shawn", 3)      # Conexão no reformatório
+g.adicionar_aresta("Robby", "Shawn", 3)      
 
 g.plotar_grafo()
 
-# 4. Executar as análises
+# Executar as análises
 g.dfs_recursiva("Terry Silver")
 
 g.resetar_visitados()
